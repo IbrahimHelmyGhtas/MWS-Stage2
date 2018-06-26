@@ -1,0 +1,9 @@
+{
+  "short_name": "MWS",
+  "name": "Mobile Web Specialist - Stage 2",
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/maps/",
+  "theme_color": "#804C1E"
+}

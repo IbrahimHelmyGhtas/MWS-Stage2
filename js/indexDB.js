@@ -1,11 +1,11 @@
 //import idb from 'idb';
 
 
-const dbPromise = idb.open('MWS-DB', 5,function(upgradeDB) {
+const dbPromise = idb.open('New-MWS-DB', 1,function(upgradeDB) {
 	switch(upgradeDB.oldVersion)
 	{
 	
-  		case 4 :
+  		case 0 :
   		  var restaurantStore = upgradeDB.createObjectStore('restaurants', {keyPath : 'name'});
   		/*case 3 : 
   		 var restaurantStore = upgradeDB.transaction.objectStore('restaurants');

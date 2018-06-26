@@ -1,4 +1,4 @@
-var staticCacheName = 'MWS-Stage-idbFirstTest';
+var staticCacheName = 'MWS-Stage-idbFirstTest3';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
