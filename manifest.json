@@ -1,6 +1,18 @@
 {
   "short_name": "MWS",
   "name": "Mobile Web Specialist - Stage 2",
+  "icons": [
+    {
+      "src": "/img/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icon2.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
   "start_url": "/",
   "background_color": "#fff",
   "display": "standalone",
