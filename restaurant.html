@@ -27,6 +27,10 @@
         <ul id="breadcrumb" role="list"   aria-label="breadcrumb" >
             <li><a href="/">Home</a></li>
         </ul>
+           <!--  <label id="ham" class="menu" for="toogle">&#9776</label>-->
+        <img  src="img/map-icon.png"  alt="icon to show map" id="ham" class="menu" for="toogle" />  
+       
+       <!--< <input type="checkbox" id="toogle" ></input> -->
         <!-- End breadcrumb -->
         <!-- End nav -->
     </header>
@@ -34,8 +38,8 @@
     <!-- Beginning main -->
     <main id="maincontent">
         <!-- Beginning map -->
-        <section id="map-container">
-            <div id="map" aria-role="map" aria-label="Restaurant location"></div>
+        <section id="map-container" class="drawer">
+            <div id="map" aria-role="map" aria-label="Restaurant location" aria-hidden="true"></div>
         </section>
         <!-- End map -->
         <!-- Beginning restaurant -->
@@ -62,10 +66,15 @@
     <!-- Beginning scripts -->
     <!-- Database helpers -->
     <script >
-    if('serviceWorker' in navigator) {
+    function init()
+   {
+   if(!navigator.serviceWorker) return;
+    
   navigator.serviceWorker
            .register('SW.js')
-           .then(function() { console.log("Service Worker Registered"); });
+           .then(function() { console.log("Service Worker Registered"); }).catch(function(){
+           console.log("Failed to register");
+       });
 }
 </script>
     <script type="text/javascript" src="js/dbhelper.js"></script>

@@ -1,6 +1,17 @@
 let restaurant;
 var map;
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  init();
+  
+});
+
+
+document.getElementById("ham").addEventListener('click', function(e) {
+  document.getElementById("map-container").classList.toggle('open');
+  e.stopPropagation();  
+});
+
 /**
  * Initialize Google map, called from HTML.
  */
@@ -57,6 +68,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  image.alt = 'restaurant : ' + restaurant.name
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');

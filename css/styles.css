@@ -100,7 +100,7 @@ nav {
 
         /* Add a color to all links inside the list */
         #breadcrumb li a {
-            color: #0275d8;
+            color: #024F92;
             text-decoration: none;
         }
 
@@ -233,7 +233,7 @@ nav {
 }
 
 #restaurant-name {
-    color: #f18200;
+    color: #804C1E;
     font-family: Arial,sans-serif;
     font-size: 20pt;
     font-weight: 200;
@@ -277,7 +277,7 @@ nav {
 }
 
     #reviews-container h2 {
-        color: #f58500;
+        color: #6B3B00;
         font-size: 24pt;
         font-weight: 300;
         letter-spacing: -1px;
@@ -308,3 +308,18 @@ nav {
 #restaurant-hours td {
     color: #666;
 }
+
+.menu{
+
+    display: none;
+}
+#ham
+{
+    font-size: 26px;
+    line-height: 50px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+
