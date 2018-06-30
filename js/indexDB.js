@@ -66,6 +66,8 @@ dbPromise.then(function(db){
 	console.log('Pepole Added successfully for keyval store');
 }); */
 
+
+
 dbPromise.then(function(db){
  var tx= db.transaction('restaurants');
  var restaurantStore = tx.objectStore('restaurants');
@@ -73,5 +75,6 @@ dbPromise.then(function(db){
  return restaurantStore.getAll();
 
 }).then(function(restaurants){
+	restaurants = restaurants;
    console.log('Restaurants obj : ' , restaurants);
 });

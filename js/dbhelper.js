@@ -46,6 +46,21 @@ class DBHelper {
 
         callback(null, restaurants);
       } else { // Oops!. Got an error from server.
+
+         //test fetch offline
+          dbPromise.then(function(db){
+          var tx= db.transaction('restaurants');
+        var restaurantStore = tx.objectStore('restaurants');
+
+        return restaurantStore.getAll();
+
+           }).then(function(restaurants){
+            callback(null, restaurants);
+       console.log('Offline Restaurants obj : ' , restaurants);
+        });
+
+
+
         const error = (`Request failed. Returned status of ${xhr.status}`);
         callback(error, null);
       }

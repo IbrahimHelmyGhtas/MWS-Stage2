@@ -1,10 +1,11 @@
-var staticCacheName = 'MWS-Stage-idbFirstTest26';
+var staticCacheName = 'MWS-Stage-idbFirstTest32';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
         '/',
+        'js/SW.js',
         'js/main.js',
         'js/dbhelper.js',  
         'js/indexDB.js',
@@ -75,12 +76,42 @@ const restaurants =  response;
               {
                 return new Response("not found");
               }
-              console.log('get it offline');*/
+              console.log('get it o');*/
+              console.log('get it online');
               console.log('response', response);
           return response;
         }
-        // console.log('get it online');
-        return fetch(event.request);
+         console.log('get it offline');
+
+
+        /* dbPromise.then(function(db){
+ var tx= db.transaction('restaurants');
+ var restaurantStore = tx.objectStore('restaurants');
+
+ return restaurantStore.getAll();
+
+}).then(function(restaurants){
+   console.log('Offline Restaurants obj : ' , restaurants);
+});*/
+
+      var promis = fetch(event.request);
+      if(promis)
+       { return promis;}
+      else
+      {
+         dbPromise.then(function(db){
+          var tx= db.transaction('restaurants');
+        var restaurantStore = tx.objectStore('restaurants');
+
+        return restaurantStore.getAll();
+
+           }).then(function(restaurants){
+       console.log('Offline Restaurants obj : ' , restaurants);
+        });
+
+      }
+
+        //return fetch(event.request);
      })
 
     );

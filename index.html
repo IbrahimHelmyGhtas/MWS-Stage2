@@ -21,7 +21,7 @@
    if(!navigator.serviceWorker) return;
     
   navigator.serviceWorker
-           .register('SW.js')
+           .register('SW1.js')
            .then(function() { console.log("Service Worker Registered"); }).catch(function(){
            console.log("Failed to register");
        });
@@ -29,7 +29,7 @@
 </script>
 </head>
 
-<body>
+<body class="bodyClass">
     <header>
         <nav>
             <h1><a href="/">Restaurant Reviews</a></h1>
