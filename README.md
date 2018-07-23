@@ -1,11 +1,11 @@
 ﻿
 Project Title
-Second stage of my project in MWS Scolarship.
+Third stage of my project in MWS Scolarship.
 
 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 See deployment for notes on how to deploy the project on a live system.
-You can clone project with url : https://github.com/IbrahimHelmyGhtas/MWS-Stage2.git
+You can clone project with url : https://github.com/IbrahimHelmyGhtas/MWS-Stage3.git
 
 Prerequisites
 You need to install Git 
@@ -28,7 +28,7 @@ Change the current working directory to the location where you want the cloned d
 
 Type git clone, and then paste the URL you copied in Step 2.
 
-git clone  https://github.com/IbrahimHelmyGhtas/MWS-Stage2.git
+git clone  https://github.com/IbrahimHelmyGhtas/MWS-Stage3.git
 Press Enter. Your local clone will be created.
 
 
