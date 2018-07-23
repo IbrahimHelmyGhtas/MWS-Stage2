@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   init();
   fetchNeighborhoods();
   fetchCuisines();
+  //fetchReviewsHTML();
 });
 
 /**
@@ -25,6 +26,29 @@ fetchNeighborhoods = () => {
       fillNeighborhoodsHTML();
     }
   });
+}
+
+fetchReviewsHTML = () => {
+  DBHelper.fetchReviewsHTML((error, reviews) => {
+    if (error) { // Got an error
+      console.error(error);
+    } else {
+      self.reviews = reviews;
+      fillReviewsHTML(self.reviews);  ///fillReviewsHTML
+    }
+  });
+}
+
+
+fillReviewsHTML = (reviews = self.reviews) => {
+  console.log('rev test',reviews);
+ /* const select = document.getElementById('neighborhoods-select');
+  neighborhoods.forEach(neighborhood => {
+    const option = document.createElement('option');
+    option.innerHTML = neighborhood;
+    option.value = neighborhood;
+    select.append(option);
+  });*/
 }
 
 /**

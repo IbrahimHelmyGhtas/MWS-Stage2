@@ -1,18 +1,22 @@
-var staticCacheName = 'MWS-Stage-idbFirstTest52';
-var CACHE_CONTAINING_ERROR_MESSAGES ='MWS-errors';
-var CACHE_DYNAMIC_NAME ='MWS-dynamic-cache';
+importScripts('js/idb.js');
+importScripts('js/indexDB.js');
+importScripts('js/dbhelper.js');
 
+var staticCacheName = 'MWS-Stage-idbFirstTest166'; 
+var CACHE_CONTAINING_ERROR_MESSAGES ='MWS-errors';
+var CACHE_DYNAMIC_NAME ='MWS-dynamic-cache'; 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
         '/',
         'js/main.js',
+        //'js/idb.js',
         'js/dbhelper.js',  
         'js/indexDB.js',
         'js/restaurant_info.js',
-        'css/styles.css',
-        'css/custome-styles.css',
+        'css/mini-css.css',
+        //'css/custome-styles.css',
         'img/1.jpg',
         'img/2.jpg',
         'img/3.jpg', 
@@ -21,8 +25,9 @@ self.addEventListener('install', function(event) {
         'img/6.jpg',
         'img/7.jpg',
         'img/8.jpg',
-        'img/9.jpg'
-       // 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAhgkahpB5UZ-keXKZz1U8CS9wkdrLxMTA&libraries=places&callback=initMap'
+        'img/9.jpg',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+        //'https://maps.googleapis.com/maps/api/js?key=AIzaSyAhgkahpB5UZ-keXKZz1U8CS9wkdrLxMTA&libraries=places&callback=initMap'
      
       ]);
     })
@@ -139,4 +144,73 @@ const restaurants =  response;
 
 });
 
+
+
+self.addEventListener('sync', function (event) {
+
+   // self.registration.showNotification("Sync event fired!");
+  if (event.tag === 'myFirstSync') {
+      event.waitUntil(
+        
+
+
+        getDataFromOutbox().then(function(messages) {
+          // Post the messages to the server
+          return fetch('http://localhost:1337/reviews/', {
+          method: 'POST',
+          body: JSON.stringify(messages),
+          headers: { 'Content-Type': 'application/json' }
+          }).then(() => {
+          // Success! Remove them from the outbox       
+          removeDataFromOutbox();
+          });
+      })
+      //console.log('re establish connection test')
+
+
+
+
+      );
+    }
+});
+
+
+
+/*      if (event.tag == 'myF') {
+        console.log(event.request.url);
+      event.waitUntil(
+        
+      )}
+    }); */
+
+    function getDataFromOutbox(){
+    return dbNew_Reviews
+    .then(function(db){
+        var tx = db.transaction('new-review', 'readonly');
+      var store = tx.objectStore('new-review');
+      //console.log(url);
+      return store.getAll();
+    })
+    .then(function(data){
+      console.log(data);
+    })
+    .catch(function(err){
+      console.log(err);
+    });
+  }
+
+  function removeDataFromOutbox(){
+    return dbNew_Reviews
+    .then(function(db){
+      var tx = db.transaction('new-review', 'readwrite');
+      var store = tx.objectStore('new-review');
+      return store.clear();
+    })
+    .then(function(){
+      console.log('deleted')
+    })
+    .catch(function(e){
+      console.log(e);
+    });
+}
 

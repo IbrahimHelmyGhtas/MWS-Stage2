@@ -9,10 +9,10 @@
      <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <!-- Main CSS file -->
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
-
-    <!-- Custome CSS file -->
-    <link rel="stylesheet" href="css/custome-styles.css">
+    <link rel="stylesheet" href="css/mini-css.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custome CSS file 
+    <link rel="stylesheet" href="css/custome-styles.css">-->
     <title>Restaurant Info</title>
 </head>
 
@@ -49,11 +49,39 @@
             <p id="restaurant-cuisine"></p>
             <p id="restaurant-address"></p>
             <table id="restaurant-hours"></table>
+
+            <!-- Rounded switch -->
+            <label class="FavoritClass" name ="Favorit Label" > Is Favorit  : </label>
+            <label name ="Favorit Button" class="switch">
+                  <input type="checkbox" id="FavoritCheckBox">
+                  <span class="slider round"></span>
+            </label>
+
         </section>
         <!-- end restaurant -->
         <!-- Beginning reviews -->
         <section id="reviews-container">
             <ul id="reviews-list"></ul>
+
+        </section>
+        <section id="reviews-container-form">
+            <form action="/" method="post">
+                    <b class="title">User name : </b>  <input type="text" id="username" aria-label="User name" name="username" >
+                    <br><br>
+                    <b class="title" aria-label="User Rate"> Rating : </b>   
+                              <span aria-label="one star"  id="firstStar" class="fa fa-star"></span>
+                              <span aria-label="two stars" id="secondStar" class="fa fa-star"></span>
+                              <span  aria-label="three stars"id="thirdStar" class="fa fa-star"></span>
+                              <span  aria-label="four stars"id="fourthStar" class="fa fa-star"></span>
+                              <span  aria-label="five star" id="fifthStar" class="fa fa-star"></span>
+                    <br><br>
+                    <b class="title"  > Comments :</b>  
+                    <textarea rows="4"  aria-label="User Comments" id="commentname" name="commentname">
+                    </textarea>
+                    <br><br>
+                    <input type="button" id="addreview" value="Add Review"></input>
+                    <br>
+            </form>
         </section>
         <!-- End reviews -->
     </main>
@@ -71,10 +99,21 @@
    if(!navigator.serviceWorker) return;
     
   navigator.serviceWorker
-           .register('SW1.js')
-           .then(function() { console.log("Service Worker Registered"); }).catch(function(){
-           console.log("Failed to register");
-       });
+           .register('SW1.js') 
+           .then(function() { 
+                console.log("Service Worker Registered"); 
+
+                navigator.serviceWorker.ready.then(function(swRegistration) {
+                    console.log("first sync Registered"); 
+                  return swRegistration.sync.register('myFirstSync');
+
+                }).then(function(){
+                     console.log("second check first sync Registered"); 
+                });
+
+               }).catch(function(){
+                   console.log("Failed to register");
+               });
 }
 </script>
     <script type="text/javascript" src="js/dbhelper.js"></script>
