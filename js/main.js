@@ -12,7 +12,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
   //fetchReviewsHTML();
+ 
+
 });
+
+
+
+
 
 /**
  * Fetch all neighborhoods and set their HTML.
@@ -127,8 +133,47 @@ updateRestaurants = () => {
     } else {
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
+
+var lazyLoadImages = Array.from(document.getElementsByClassName('lazy'));
+ var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.src;
+          lazyImage.srcset = lazyImage.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+             console.log('img not observed',lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      console.log('img observed',lazyImage);
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+
+
     }
+
+
+
+
+
+
+
+
   })
+
+
+
+
 }
 
 /**
@@ -164,8 +209,11 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.className = 'lazy restaurant-img';
+
+  image.src = "/img/clear.gif";
+  image.srcset =  DBHelper.imageUrlForRestaurant(restaurant);
+  //image.data-srcset = DBHelper.imageUrlForRestaurant(restaurant);
   image.alt = restaurant.name;
   li.append(image);
 

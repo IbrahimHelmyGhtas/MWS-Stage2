@@ -154,7 +154,8 @@ dbPromiseReviews.then(function(db){
                console.log('Success Form :', response);
                  alert("Review added successfully.");
 
-               console.log('Added successfully for new-review store'); 
+               console.log('Added successfully for new-review store');  
+               return response;
              }).then(function(oldresponse){
                 fetch('http://localhost:1337/reviews/', {
                  method: 'POST',

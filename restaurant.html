@@ -2,6 +2,29 @@
 <html lang="en">
 
 <head>
+    <style type="text/css">
+        
+        #status {
+  /*position: fixed;*/
+  width: 100%;
+  font: bold 1em sans-serif;
+  color: #FFF;
+  padding: 0.5em;
+}
+
+#log {
+  padding: 2.5em 0.5em 0.5em;
+  font: 1em sans-serif;
+}
+
+.online {
+  background: green;
+}
+
+.offline {
+  background: red;
+}
+    </style>
     <!-- Normalize.css for better cross-browser consistency -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#804C1E"/>
@@ -10,7 +33,8 @@
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <!-- Main CSS file -->
     <link rel="stylesheet" href="css/mini-css.css" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preload"   href="css/mini-css.css" as="style" >
+     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <!-- Custome CSS file 
     <link rel="stylesheet" href="css/custome-styles.css">-->
     <title>Restaurant Info</title>
@@ -28,7 +52,7 @@
             <li><a href="/">Home</a></li>
         </ul>
            <!--  <label id="ham" class="menu" for="toogle">&#9776</label>-->
-        <img  src="img/map-icon.png"  alt="icon to show map" id="ham" class="menu" for="toogle" />  
+        <img  src="img/map-icon2.webp"  alt="icon to show map" id="ham" class="menu" for="toogle" />  
        
        <!--< <input type="checkbox" id="toogle" ></input> -->
         <!-- End breadcrumb -->
@@ -82,7 +106,13 @@
                     <input type="button" id="addreview" value="Add Review"></input>
                     <br>
             </form>
+
+              <div id="status"></div>
+        <div id="log"></div>
         </section>
+
+
+      
         <!-- End reviews -->
     </main>
     <!-- End main -->
@@ -115,6 +145,80 @@
                    console.log("Failed to register");
                });
 }
+
+window.addEventListener('load', function() {
+  var status = document.getElementById("status");
+  var log = document.getElementById("log");
+
+  function updateOnlineStatus(event) {
+    var condition = navigator.onLine ? "online" : "offline";
+
+    status.className = condition;
+    status.innerHTML = condition.toUpperCase();
+
+    log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
+  }
+
+
+function addreviewoffline(event)
+{
+        updateOnlineStatus(event);
+        if(navigator.onLine == true)
+        {
+        getDataFromOutbox().then(function(messages) {
+          // Post the messages to the server
+          return fetch('http://localhost:1337/reviews/', {
+          method: 'POST',
+          body: JSON.stringify(messages),
+          headers: { 'Content-Type': 'application/json' }
+          }).then(function(rev)  {
+          // Success! Remove them from the outbox       
+          removeDataFromOutbox();
+          //return rev;
+          });
+          //return messages;
+      })
+        }
+}
+
+
+
+    function getDataFromOutbox(){
+    return dbNew_Reviews
+    .then(function(db){
+        var tx = db.transaction('new-review', 'readonly');
+      var store = tx.objectStore('new-review');
+      //console.log(url);
+      return store.getAll();
+    })
+    .then(function(data){
+        return data;
+      console.log(data);
+    })
+    .catch(function(err){
+      console.log(err);
+    });
+  }
+
+  function removeDataFromOutbox(){
+    return dbNew_Reviews
+    .then(function(db){
+      var tx = db.transaction('new-review', 'readwrite');
+      var store = tx.objectStore('new-review');
+      return store.clear();
+    })
+    .then(function(){
+      console.log('deleted')
+    })
+    .catch(function(e){
+      console.log(e);
+    });
+}
+
+
+  window.addEventListener('online',  addreviewoffline);
+  window.addEventListener('offline', addreviewoffline);
+});
 </script>
     <script type="text/javascript" src="js/dbhelper.js"></script>
     <!-- Main javascript file -->

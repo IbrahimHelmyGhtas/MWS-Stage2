@@ -1,8 +1,8 @@
-importScripts('js/idb.js');
+/*importScripts('js/idb.js');
 importScripts('js/indexDB.js');
-importScripts('js/dbhelper.js');
+importScripts('js/dbhelper.js');*/
 
-var staticCacheName = 'MWS-Stage-idbFirstTest166'; 
+var staticCacheName = 'MWS-Stage-idbFirstTest198'; 
 var CACHE_CONTAINING_ERROR_MESSAGES ='MWS-errors';
 var CACHE_DYNAMIC_NAME ='MWS-dynamic-cache'; 
 self.addEventListener('install', function(event) {
@@ -11,21 +11,22 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
         '/',
         'js/main.js',
-        //'js/idb.js',
+        'js/idb.js',
         'js/dbhelper.js',  
         'js/indexDB.js',
         'js/restaurant_info.js',
         'css/mini-css.css',
         //'css/custome-styles.css',
-        'img/1.jpg',
-        'img/2.jpg',
-        'img/3.jpg', 
-        'img/4.jpg',
-        'img/5.jpg',
-        'img/6.jpg',
-        'img/7.jpg',
-        'img/8.jpg',
-        'img/9.jpg',
+        'img/1.webp',
+        'img/2.webp',
+        'img/3.webp', 
+        'img/4.webp',
+        'img/5.webp',
+        'img/6.webp',
+        'img/7.webp',
+        'img/8.webp',
+        'img/9.webp',
+        'img/map-icon2.webp',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
         //'https://maps.googleapis.com/maps/api/js?key=AIzaSyAhgkahpB5UZ-keXKZz1U8CS9wkdrLxMTA&libraries=places&callback=initMap'
      
@@ -150,27 +151,29 @@ self.addEventListener('sync', function (event) {
 
    // self.registration.showNotification("Sync event fired!");
   if (event.tag === 'myFirstSync') {
-      event.waitUntil(
+    //  event.waitUntil(
         
 
 
-        getDataFromOutbox().then(function(messages) {
+     /*   getDataFromOutbox().then(function(messages) {
           // Post the messages to the server
           return fetch('http://localhost:1337/reviews/', {
           method: 'POST',
           body: JSON.stringify(messages),
           headers: { 'Content-Type': 'application/json' }
-          }).then(() => {
+          }).then(function(rev)  {
           // Success! Remove them from the outbox       
           removeDataFromOutbox();
+          //return rev;
           });
-      })
+          //return messages;
+      })*/
       //console.log('re establish connection test')
 
 
 
 
-      );
+     // )
     }
 });
 
@@ -192,6 +195,7 @@ self.addEventListener('sync', function (event) {
       return store.getAll();
     })
     .then(function(data){
+      return data;
       console.log(data);
     })
     .catch(function(err){
@@ -213,4 +217,7 @@ self.addEventListener('sync', function (event) {
       console.log(e);
     });
 }
+
+
+
 
