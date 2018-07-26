@@ -2,7 +2,7 @@
 importScripts('js/indexDB.js');
 importScripts('js/dbhelper.js');*/
 
-var staticCacheName = 'MWS-Stage-idbFirstTest198'; 
+var staticCacheName = 'MWS-Stage-idbFirstTest250'; 
 var CACHE_CONTAINING_ERROR_MESSAGES ='MWS-errors';
 var CACHE_DYNAMIC_NAME ='MWS-dynamic-cache'; 
 self.addEventListener('install', function(event) {
@@ -10,13 +10,14 @@ self.addEventListener('install', function(event) {
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
         '/',
-        'js/main.js',
-        'js/idb.js',
-        'js/dbhelper.js',  
-        'js/indexDB.js',
-        'js/restaurant_info.js',
-        'css/mini-css.css',
+        'dist/main-min.js',
+        'dist/idb-min.js',
+        'dist/dbhelper-min.js',  
+        'dist/indexDB-min.js',
+        'dist/restaurant_info-min.js',
+        //'dist/mini-css.min.css',
         //'css/custome-styles.css',
+        'dist/intersection-observer-min.js',
         'img/1.webp',
         'img/2.webp',
         'img/3.webp', 
@@ -26,8 +27,18 @@ self.addEventListener('install', function(event) {
         'img/7.webp',
         'img/8.webp',
         'img/9.webp',
-        'img/map-icon2.webp',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+        'img/rest1.webp',
+        'img/rest2.webp',
+        'img/rest3.webp', 
+        'img/rest4.webp',
+        'img/rest5.webp',
+        'img/rest6.webp',
+        'img/rest7.webp',
+        'img/rest8.webp',
+        'img/rest9.webp',
+        'img/rest10.webp',
+        'img/map-icon2.webp'
+       
         //'https://maps.googleapis.com/maps/api/js?key=AIzaSyAhgkahpB5UZ-keXKZz1U8CS9wkdrLxMTA&libraries=places&callback=initMap'
      
       ]);
@@ -57,34 +68,14 @@ caches.keys().then(function(cacheNames){
   );
 });  
 
-//console.log("test activate sw3");
 
 self.addEventListener('fetch', function(event) {
-//console.log('helooo');
 
-/*event.respondWith(
-
-      fetch('http://localhost:1337/restaurants').then(function(response){
-if(response.status === 404)
-{
-  return new Response("not found");
-}
-const restaurants =  response;
-//return response;
-      }).catch(function(){
-        return new Response("Opps something wrong with network")
-      })
-  );*/
-  //console.log('service worker fetch');
   event.respondWith(
     caches.match(event.request).then(function(response){
         if(response)
         { 
-          /*  if(response.status === 404)
-              {
-                return new Response("not found");
-              }
-              console.log('get it o');*/
+          
               console.log('get it from cache');
               console.log('response', response);
           return response;
@@ -107,38 +98,7 @@ const restaurants =  response;
                 });
             });
         }
-        // console.log('get it offline');
- 
-
-        /* dbPromise.then(function(db){
- var tx= db.transaction('restaurants');
- var restaurantStore = tx.objectStore('restaurants');
-
- return restaurantStore.getAll();
-
-}).then(function(restaurants){
-   console.log('Offline Restaurants obj : ' , restaurants);
-});*/
-
-     // var promis = fetch(event.request);
-    // if(promis)
-     //  { return promis;}
-    //  else
-    //  {
-     /*    dbPromise.then(function(db){
-          var tx= db.transaction('restaurants');
-        var restaurantStore = tx.objectStore('restaurants');
-
-        return restaurantStore.getAll();
-
-           }).then(function(restaurants){
-             restaurants;
-       console.log('Offline Restaurants obj : ' , restaurants);
-        });*/
-
-     // }
-
-        //return fetch(event.request);
+    
      })
 
     );
@@ -179,44 +139,6 @@ self.addEventListener('sync', function (event) {
 
 
 
-/*      if (event.tag == 'myF') {
-        console.log(event.request.url);
-      event.waitUntil(
-        
-      )}
-    }); */
-
-    function getDataFromOutbox(){
-    return dbNew_Reviews
-    .then(function(db){
-        var tx = db.transaction('new-review', 'readonly');
-      var store = tx.objectStore('new-review');
-      //console.log(url);
-      return store.getAll();
-    })
-    .then(function(data){
-      return data;
-      console.log(data);
-    })
-    .catch(function(err){
-      console.log(err);
-    });
-  }
-
-  function removeDataFromOutbox(){
-    return dbNew_Reviews
-    .then(function(db){
-      var tx = db.transaction('new-review', 'readwrite');
-      var store = tx.objectStore('new-review');
-      return store.clear();
-    })
-    .then(function(){
-      console.log('deleted')
-    })
-    .catch(function(e){
-      console.log(e);
-    });
-}
 
 
 

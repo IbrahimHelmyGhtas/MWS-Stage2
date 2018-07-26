@@ -3,7 +3,7 @@
 
 <head>
     <style type="text/css">
-        
+         body,td,th,p{font-family:Arial,Helvetica,sans-serif;font-size:10pt;color:#333;line-height:1.5}body{background-color:#fdfdfd;margin:0;position:relative}ul,li{font-family:Arial,Helvetica,sans-serif;font-size:10pt;color:#333}a{color:orange;text-decoration:none}a:hover,a:focus{color:#3397db;text-decoration:none}a img{border:none 0 #fff}h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica,sans-serif;margin:0 0 20px}article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}#maincontent{background-color:#f3f3f3;min-height:100%}#footer{background-color:#444;color:#ffdd9e;font-size:8pt;letter-spacing:1px;padding:25px;text-align:center;text-transform:uppercase}nav{width:100%;height:80px;background-color:#252831;text-align:center}nav h1{margin:auto}nav h1 a{color:#fff;font-size:14pt;font-weight:200;letter-spacing:10px;text-transform:uppercase}#breadcrumb{padding:10px 40px 16px;list-style:none;background-color:#eee;font-size:17px;margin:0;width:calc(50% - 80px)}#breadcrumb li{display:inline}#breadcrumb li+li:before{padding:8px;color:black;content:"/\00a0"}#breadcrumb li a{color:#024f92;text-decoration:none}#breadcrumb li a:hover{color:#01447e;text-decoration:underline}#map{height:400px;width:100%;background-color:#ccc}.filter-options{display:flex;flex-wrap:wrap;width:100%;height:100px;background-color:#3397db;align-items:center}.filter-options h2{color:#000;font-size:1rem;font-weight:normal;line-height:1;margin:0 20px}.filter-options select{background-color:white;border:1px solid #fff;font-family:Arial,sans-serif;font-size:11pt;height:35px;letter-spacing:0;margin:10px;padding:0 10px;width:50%}#restaurants-list{background-color:#f3f3f3;list-style:outside none none;margin:0;padding:30px 15px 60px;text-align:center}#restaurants-list li{background-color:#fff;border:2px solid #ccc;font-family:Arial,sans-serif;margin:15px;min-height:380px;padding:0 30px 25px;text-align:left;width:270px}#restaurants-list .restaurant-img{background-color:#ccc;display:block;margin:0;max-width:100%;min-height:248px;min-width:100%}#restaurants-list li h1{color:#804c1e;font-family:Arial,sans-serif;font-size:14pt;font-weight:200;letter-spacing:0;line-height:1.3;margin:20px 0 10px;text-transform:uppercase}#restaurants-list p{margin:0;font-size:11pt}#restaurants-list li a{background-color:orange;border-bottom:3px solid #eee;color:#000;display:inline-block;font-size:10pt;margin:15px 0 0;padding:8px 30px 10px;text-align:center;text-decoration:none;text-transform:uppercase}.inside header{position:fixed;top:0;width:100%;z-index:1000}.inside #map-container{background:blue none repeat scroll 0 0;height:87%;position:fixed;right:0;top:80px;width:50%}.inside #map{background-color:#ccc;height:100%;width:100%}.inside #footer{bottom:0;position:absolute;width:50%}#restaurant-name{color:#804c1e;font-family:Arial,sans-serif;font-size:20pt;font-weight:200;letter-spacing:0;margin:15px 0 30px;text-transform:uppercase;line-height:1.1}#restaurant-img{width:90%}#restaurant-address{font-size:12pt;margin:10px 0}#restaurant-cuisine{background-color:#333;color:#ddd;font-size:12pt;font-weight:300;letter-spacing:10px;margin:0 0 20px;padding:2px 0;text-align:center;text-transform:uppercase;width:90%}#restaurant-container,#reviews-container{border-bottom:1px solid #d9d9d9;border-top:1px solid #fff;padding:140px 40px 30px;width:50%}#reviews-container{padding:30px 40px 80px}#reviews-container h2{color:#6b3b00;font-size:24pt;font-weight:300;letter-spacing:-1px;padding-bottom:1pt}#reviews-list{margin:0;padding:0}#reviews-list li{background-color:#fff;border:2px solid #f3f3f3;display:block;list-style-type:none;margin:0 0 30px;overflow:hidden;position:relative;width:85%;border-radius:20px 0 20px 0}#reviews-list li p{margin:0 0 10px}#restaurant-hours td{color:#666}.menu{display:none}#ham{font-size:26px;line-height:50px;cursor:pointer;width:40px;height:40px}b.title{font-family:Arial,Helvetica,sans-serif;font-size:10pt;color:#333;line-height:1.5}.checked{color:orange}.fa-star{cursor:pointer}.switch{position:relative;display:inline-block;width:60px;height:34px}.switch input{display:none}.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;-webkit-transition:.4s;transition:.4s}.slider:before{position:absolute;content:"";height:26px;width:26px;left:4px;bottom:4px;background-color:white;-webkit-transition:.4s;transition:.4s}input:checked+.slider{background-color:#5cd65c}input:focus+.slider{box-shadow:0 0 1px #5cd65c}input:checked+.slider:before{-webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px)}.slider.round{border-radius:34px}.slider.round:before{border-radius:50%}.FavoritClass{font-size:16px;margin:10px 0}.RateClass{background-color::orange;width:25%;padding:5px;margin:auto;color:#262626;background:orange;border-radius:5px;text-align:center;margin-left:20px}p .RateClass{margin-left:20px}.UserNameReview{color:white;background:black;border-radius:20px 0 0 0;text-align:left;text-indent:10px;padding:5px 20px}.UserDateReview{padding:5px;border-radius:5px;text-align:right;padding:0 5px}.UserCommentReview{text-indent:10px;text-align:left;padding:0 20px}@media screen and (max-width:450px){.filter-options h2{width:100%;color:#000}.filter-options select{width:calc(50% - 20px)}#restaurants-list{padding:0}#restaurants-list li{margin:5px auto;padding:5px;width:calc(100% - 20px);border-radius:5px;text-align:center}#restaurant-name{width:100%}#breadcrumb li a{font-size:18px}#restaurant-container{padding:70px 10px 30px;width:calc(100% - 20px)}#restaurant-img{width:100%}#restaurant-cuisine{width:100%}.inside #footer{width:calc(100% - 50px)}#reviews-container{border-bottom:1px solid #d9d9d9;border-top:1px solid #fff;width:calc(100% - 80px)}.menu{display:block;float:right}.inside header{display:flex;flex-wrap:wrap}#breadcrumb{width:calc(65% - 15px)}.inside #map-container{background:blue none repeat scroll 0 0;height:87%;position:fixed;right:0;top:80px;width:100%}.drawer{-webkit-transform:translate(-800px,0);transform:translate(-800px,0);transition:transform .3s ease}.drawer.open{-webkit-transform:translate(0,0);transform:translate(0,0)}#reviews-container-form{display:flex;flex-wrap:wrap;border-bottom:1px solid #d9d9d9;border-top:1px solid #fff;padding:20px;height:300px}#commentname{width:100%}}@media screen and (min-width:451px) and (max-width:850px){nav h1 a{font-size:16pt}.filter-options{display:flex;flex-wrap:nowrap;height:50px}.filter-options h2{width:33.3%}.filter-options select{width:calc(67% - 20px)}#restaurants-list{display:flex;flex-wrap:wrap;padding:30px 15px 60px}#restaurants-list li{margin:10px;padding:15px 30px 25px;width:calc(50% - 85px);border-radius:5px;text-align:center}#restaurants-list li h1{min-height:50px;font-size:14pt;line-height:1.3;color:#804c1e}#restaurants-list p{font-size:12pt}#restaurants-list li a{background-color:orange;border-bottom:3px solid #eee;color:#000;display:inline-block;font-size:12pt;margin:15px 0 0;padding:12px 40px 14px;text-align:center;text-decoration:none;text-transform:uppercase}#restaurants-list .restaurant-img{min-height:200px}.inside #footer{width:calc(100% - 50px)}.inside header{position:relative;width:calc(100%)}#breadcrumb{width:calc(100% - 80px)}#maincontent{width:calc(100%)}.inside #map-container{top:80px;width:calc(50% - 50px);left:calc(50% - 0)}#restaurant-container,#reviews-container{width:calc(50% - 50px)}#reviews-container-form{display:flex;flex-wrap:wrap;border-bottom:1px solid #d9d9d9;border-top:1px solid #fff;padding:20px;height:300px}#commentname{width:100%}}@media screen and (min-width:851px){.bodyClass{width:1200px;margin:auto}nav h1 a{font-size:18pt}.filter-options{display:flex;flex-wrap:nowrap;height:50px}.filter-options h2{width:20%;color:#000}.filter-options select{width:calc(80% - 20px)}#restaurants-list{display:flex;flex-wrap:wrap;padding:30px 15px 60px}#restaurants-list li{margin:10px;padding:15px 30px 25px;width:calc(33.3% - 85px);border-radius:5px;text-align:center}#restaurants-list li h1{min-height:50px;font-size:14pt;line-height:1.2}#restaurants-list p{font-size:12pt}#restaurants-list li a{background-color:orange;border-bottom:3px solid #eee;color:#000;display:inline-block;font-size:12pt;margin:15px 0 0;padding:12px 60px 14px;text-align:center;text-decoration:none;text-transform:uppercase}#restaurants-list .restaurant-img{min-height:200px}.inside #footer{width:calc(100% - 50px)}.inside header{position:relative;width:calc(100%)}#breadcrumb{width:calc(100% - 80px)}#maincontent{width:calc(100%)}.inside #map-container{top:80px;width:calc(50% - 50px);left:calc(50% - 0)}#restaurant-container,#reviews-container{width:calc(50% - 20px)}#reviews-container-form{display:flex;flex-wrap:wrap;border-bottom:1px solid #d9d9d9;border-top:1px solid #fff;padding:20px;height:300px}#commentname{width:100%}}
         #status {
   /*position: fixed;*/
   width: 100%;
@@ -24,17 +24,24 @@
 .offline {
   background: red;
 }
+
+#restaurantimg {
+    height: 100%;
+    width: 100%;
+    
+}
     </style>
+
     <!-- Normalize.css for better cross-browser consistency -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#804C1E"/>
      <meta name="keywords" content="MWS,Stage2,Development,UDACity,Google">
      <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-    <!-- Main CSS file -->
-    <link rel="stylesheet" href="css/mini-css.css" >
-    <link rel="preload"   href="css/mini-css.css" as="style" >
-     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!-- Main CSS file 
+    <link rel="stylesheet" href="dist/mini-css.min.css" >-->
+    
+   <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <!-- Custome CSS file 
     <link rel="stylesheet" href="css/custome-styles.css">-->
     <title>Restaurant Info</title>
@@ -63,7 +70,9 @@
     <main id="maincontent">
         <!-- Beginning map -->
         <section id="map-container" class="drawer">
-            <div id="map" aria-role="map" aria-label="Restaurant location" aria-hidden="true"></div>
+            <div id="map" aria-role="map" aria-label="Restaurant location" aria-hidden="true">
+                <img id="restaurantimg" />
+            </div>
         </section>
         <!-- End map -->
         <!-- Beginning restaurant -->
@@ -92,12 +101,19 @@
             <form action="/" method="post">
                     <b class="title">User name : </b>  <input type="text" id="username" aria-label="User name" name="username" >
                     <br><br>
-                    <b class="title" aria-label="User Rate"> Rating : </b>   
-                              <span aria-label="one star"  id="firstStar" class="fa fa-star"></span>
+                    <b class="title" aria-label="User Rate"> Rating : </b>  
+                                <select id="RateSelect" aria-label="Rate DropDownList" >
+                                  <option value="1"> 1</option>
+                                  <option value="2"> 2</option>
+                                  <option value="3"> 3</option>
+                                  <option value="4"> 4</option>
+                                  <option value="5"> 5</option>
+                                  </select> 
+                             <!-- <span aria-label="one star"  id="firstStar" class="fa fa-star"></span>
                               <span aria-label="two stars" id="secondStar" class="fa fa-star"></span>
                               <span  aria-label="three stars"id="thirdStar" class="fa fa-star"></span>
                               <span  aria-label="four stars"id="fourthStar" class="fa fa-star"></span>
-                              <span  aria-label="five star" id="fifthStar" class="fa fa-star"></span>
+                              <span  aria-label="five star" id="fifthStar" class="fa fa-star"></span>-->
                     <br><br>
                     <b class="title"  > Comments :</b>  
                     <textarea rows="4"  aria-label="User Comments" id="commentname" name="commentname">
@@ -133,13 +149,13 @@
            .then(function() { 
                 console.log("Service Worker Registered"); 
 
-                navigator.serviceWorker.ready.then(function(swRegistration) {
+                /*navigator.serviceWorker.ready.then(function(swRegistration) {
                     console.log("first sync Registered"); 
                   return swRegistration.sync.register('myFirstSync');
 
                 }).then(function(){
                      console.log("second check first sync Registered"); 
-                });
+                });*/
 
                }).catch(function(){
                    console.log("Failed to register");
@@ -192,8 +208,9 @@ function addreviewoffline(event)
       return store.getAll();
     })
     .then(function(data){
+        console.log(data);
         return data;
-      console.log(data);
+      
     })
     .catch(function(err){
       console.log(err);
@@ -220,15 +237,16 @@ function addreviewoffline(event)
   window.addEventListener('offline', addreviewoffline);
 });
 </script>
-    <script type="text/javascript" src="js/dbhelper.js"></script>
+    <script type="text/javascript" src="dist/dbhelper-min.js"></script>
     <!-- Main javascript file -->
-    <script type="text/javascript" src="js/restaurant_info.js"></script>
-     <script src="js/idb.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/indexDB.js"></script>
+    <script type="text/javascript" src="dist/restaurant_info-min.js"></script>
+     <script src="dist/idb-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="dist/indexDB-min.js"></script>
 
     <!-- Google Maps -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhgkahpB5UZ-keXKZz1U8CS9wkdrLxMTA&libraries=places&callback=initMap"></script>
-    <!-- End scripts -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhgkahpB5UZ-keXKZz1U8CS9wkdrLxMTA&libraries=places"></script>
+    <!--  &callback=initMap End scripts -->
+
 
 </body>
 
