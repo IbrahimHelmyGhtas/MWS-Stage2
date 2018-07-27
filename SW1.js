@@ -2,7 +2,7 @@
 importScripts('js/indexDB.js');
 importScripts('js/dbhelper.js');*/
 
-var staticCacheName = 'MWS-Stage-idbFirstTest250'; 
+var staticCacheName = 'MWS-Stage-idbFirstTest252'; 
 var CACHE_CONTAINING_ERROR_MESSAGES ='MWS-errors';
 var CACHE_DYNAMIC_NAME ='MWS-dynamic-cache'; 
 self.addEventListener('install', function(event) {

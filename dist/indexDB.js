@@ -44,7 +44,7 @@ const dbNew_Reviews = idb.open('new-review', 2,function(upgradeDB) {
 
 });
 
-
+/*
 dbPromise.then(function(db){
  var tx= db.transaction('restaurants');
  var restaurantStore = tx.objectStore('restaurants');
@@ -65,4 +65,4 @@ dbPromiseReviews.then(function(db){
 }).then(function(reviews){
 	reviews = reviews;
    console.log('Reviews obj : ' , reviews);
-});
+});*/
